@@ -1,26 +1,37 @@
 import React from 'react';
-import logo from './logo.svg';
+import {ToastContainer} from 'react-toastify';
+import styled from 'styled-components';
 import './App.css';
+import AddNewForm from './features/AddNewForm/AddNewForm';
+import {ListTodo} from "./features/ListTodo";
+ import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ToastContainer />
+      <StyledMainContentApp>
+        <div className="leftSide">
+          <AddNewForm />
+        </div>
+        <div className="rightSide">
+          <ListTodo />
+        </div>
+      </StyledMainContentApp>
     </div>
   );
 }
+
+const StyledMainContentApp = styled.div`
+  @media (min-width: ${(p) => p.theme.breakPoints.breakMedium}) {
+   display: flex;
+   justify-content: space-between;
+  }
+  .leftSide,
+  .rightSide {
+    text-align: center;
+    width: 100%;
+  }
+`;
 
 export default App;
